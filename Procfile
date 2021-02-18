@@ -1,1 +1,1 @@
-web:gunicorn youtb.wsgi
+web: gunicorn youtb.wsgi
