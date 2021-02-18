@@ -1,0 +1,47 @@
+{% extends 'task/base.html'%}
+
+
+{% block qualtit%}
+<!-- thumbnail goes here-->
+<br>
+<br>
+<div class="shadow-lg p-1 mb-3 bg-body rounded">
+<div class="container">
+  <div class="ratio ratio-16x9">
+    <iframe src="{{emb}}" title="YouTube video" allowfullscreen></iframe>
+  </div>
+</div>
+</div>
+<br>
+<center>
+  <h3>The video name is {{name}}</h3>
+</center>
+
+<br>
+
+<!-- table start here-->
+<div class='container'>
+  <div class="shadow p-3 mb-5 bg-body rounded">
+  <table class="table caption-top" >
+    <caption>Choose your favorate resolution</caption>
+    <thead class='table-dark'>
+      <tr>
+        <th scope="col">video resolutons</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    {% for i in res %}
+        <tbody>
+        <tr>
+            <td>{{i}}</td>
+            <td><form action="{% url 'download' i %}" method="POST" class='post-form'>{% csrf_token %}<button type="submit" class="btn btn-success" value="DOWNLOAD">Download</button></form></td>
+        </tr>
+        </tbody>
+    {% endfor %}    
+  </table>
+  </div>
+</div>
+<br>
+
+<br>
+{%endblock%}
